@@ -65,6 +65,14 @@ class GlobalHeader extends Component {
         );
     }
 
+    renderLogo() {
+        return (
+            <div className="-logo">
+                Title
+            </div>
+        );
+    }
+
     render() {
         const { open } = this.state;
         return (
@@ -74,6 +82,7 @@ class GlobalHeader extends Component {
                         <IconButton color="inherit" aria-label="Menu" onClick={this.openDrawer}>
                             <MenuIcon/>
                         </IconButton>
+                        {this.renderLogo()}
                     </Toolbar>
                 </AppBar>
                 <SwipeableDrawer open={open} onClose={this.closeDrawer} onOpen={this.openDrawer} className="-drawer">
