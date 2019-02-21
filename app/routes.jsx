@@ -9,6 +9,7 @@ import App from './App.jsx';
 import HomeRoutes from 'modules/home/routes';
 import TermsRoutes from 'modules/termsConditions/routes';
 import PolicyRoutes from 'modules/privacyPolicy/routes';
+import AboutUsRoutes from 'modules/aboutUs/routes';
 import DevTools from 'components/devTools';
 const store = configureStore(Immutable.Map());
 
@@ -16,6 +17,7 @@ const routes = [
     ...HomeRoutes,
     ...TermsRoutes,
     ...PolicyRoutes,
+    ...AboutUsRoutes,
 ]
 
 const RootApp = () => {
