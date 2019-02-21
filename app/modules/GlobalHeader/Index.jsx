@@ -73,6 +73,16 @@ class GlobalHeader extends Component {
         );
     }
 
+    renderTicker() {
+        return (
+            <div className="-ticker-container">
+                <p className="marquee">
+                    <span>Post your lastet promotion here !!</span>
+                </p>
+            </div>
+        )
+    }
+
     render() {
         const { open } = this.state;
         return (
@@ -85,6 +95,7 @@ class GlobalHeader extends Component {
                         {this.renderLogo()}
                     </Toolbar>
                 </AppBar>
+                {this.renderTicker()}
                 <SwipeableDrawer open={open} onClose={this.closeDrawer} onOpen={this.openDrawer} className="-drawer">
                     <div tabIndex={0} role="button" onClick={this.closeDrawer} onKeyDown={this.closeDrawer} className="-container">
                         {this.renderMenu()}
