@@ -1,0 +1,72 @@
+{
+    "name": "breakastkaro_frontend",
+    "version": "1.0.0",
+    "description": "Frontend repository for breakfastkaro",
+    "main": "index.js",
+    "scripts": {
+        "start": "node node_modules/gulp/bin/gulp.js",
+        "build": "node node_modules/gulp/bin/gulp.js build"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/prathameshpalyekar/breakfastkaro-frontend.git"
+    },
+    "author": "prathamesh palyekar",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/prathameshpalyekar/breakfastkaro-frontend/issues"
+    },
+    "homepage": "https://github.com/prathameshpalyekar/breakfastkaro-frontend#readme",
+    "dependencies": {
+        "@material-ui/core": "^3.9.2",
+        "@material-ui/icons": "^3.0.2",
+        "axios": "^0.18.0",
+        "classnames": "^2.2.6",
+        "connected-react-router": "^6.3.1",
+        "history": "^4.7.2",
+        "immutable": "^4.0.0-rc.12",
+        "lodash": "^4.17.11",
+        "moment": "^2.24.0",
+        "nes": "^10.0.0",
+        "react": "^16.8.2",
+        "react-dom": "^16.8.2",
+        "react-redux": "^6.0.0",
+        "react-router": "^4.3.1",
+        "react-router-redux": "^4.0.8",
+        "redux": "^4.0.1",
+        "redux-immutable": "^4.0.0",
+        "redux-thunk": "^2.3.0"
+    },
+    "devDependencies": {
+        "@babel/cli": "^7.2.3",
+        "@babel/core": "^7.3.3",
+        "@babel/plugin-transform-runtime": "^7.2.0",
+        "@babel/polyfill": "^7.2.5",
+        "@babel/preset-env": "^7.3.1",
+        "@babel/preset-flow": "^7.0.0",
+        "@babel/preset-react": "^7.0.0",
+        "babel-loader": "^8.0.5",
+        "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
+        "browser-sync": "^2.26.3",
+        "css-loader": "^2.1.0",
+        "gulp": "^4.0.0",
+        "gulp-util": "^3.0.8",
+        "html-loader": "^0.5.5",
+        "jshint": "^2.10.1",
+        "less": "^3.9.0",
+        "less-loader": "^4.1.0",
+        "mini-css-extract-plugin": "^0.5.0",
+        "optimize-css-assets-webpack-plugin": "^5.0.1",
+        "redux-devtools": "^3.5.0",
+        "redux-devtools-dock-monitor": "^1.1.3",
+        "redux-devtools-log-monitor": "^1.4.0",
+        "stats-webpack-plugin": "^0.7.0",
+        "style-loader": "^0.23.1",
+        "terminal-link": "^1.2.0",
+        "uglifyjs-webpack-plugin": "^2.1.1",
+        "url-loader": "^1.1.2",
+        "webpack": "^4.29.4",
+        "webpack-dev-server": "^3.1.14",
+        "webpack-stream": "^5.2.1"
+    }
+}
