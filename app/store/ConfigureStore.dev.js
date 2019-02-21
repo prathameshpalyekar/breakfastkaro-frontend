@@ -5,7 +5,7 @@ import thunk from 'redux-thunk';
 import { routerMiddleware } from 'connected-react-router';
 import createRootReducer from '../reducers';
 
-import DevTools from 'components/DevTools';
+import DevTools from 'components/devTools';
 export const history = createBrowserHistory();
 
 const middlewares = [

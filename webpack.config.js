@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 
 module.exports = NODE_ENV => {
@@ -13,7 +14,8 @@ module.exports = NODE_ENV => {
         output: {
             path: path.join(__dirname, 'assets'),
             filename: '[name].js',
-            chunkFilename: '[chunkhash].js'
+            chunkFilename: '[chunkhash].js',
+            publicPath: '/assets/',
         },
         cache: true,
         bail: true,
@@ -24,6 +26,7 @@ module.exports = NODE_ENV => {
             alias: {
                 modules: path.resolve(__dirname, 'app/modules/'),
                 components: path.resolve(__dirname, 'app/components/'),
+                assets: path.resolve(__dirname, 'app/assets/'),
             },
             extensions: ['*', '.js', '.jsx']
         },
@@ -79,17 +82,22 @@ module.exports = NODE_ENV => {
             }, {
                 test: /\.(woff|woff2|eot|ttf|svg)(\?\S*)?$/, loader: 'url-loader?limit=100000'
             }, {
-                test: /\.jpg/, loader: "file-loader?limit=10000&mimetype=image/jpg"
-            }, {
-                test: /\.png/, loader: "file-loader?limit=10000&mimetype=image/png"
+                test: /\.(png|jpg|gif)$/,
+                use: [{
+                    loader: 'file-loader',
+                    options: {
+                        outputPath: 'images',
+                    },
+                }]
             }]
         },
         plugins: [
             new webpack.NoEmitOnErrorsPlugin(),
             new MiniCssExtractPlugin({
-                filename: devMode ? '[name].css' : '[name].[hash].css',
-                chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
+                filename: '[name].css',
+                chunkFilename: '[id].css',
             }),
+            new CopyWebpackPlugin([{ from: 'app/assets/images', to: 'assets'}]),
         ]
     }
 };

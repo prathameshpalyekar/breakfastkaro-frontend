@@ -4,10 +4,25 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import Divider from '@material-ui/core/Divider';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import { Link } from 'react-router-dom';
+import './GlobalHeader.less';
+
+const MENU_LIST = [{
+    label: 'Home',
+    link: '/',
+}, {
+    label: 'About Us',
+    link: '/about-us',
+}, {
+    label: 'Terms & Conditions',
+    link: '/terms',
+}, {
+    label: 'Privacy Policy',
+    link: '/policy',
+}];
 
 class GlobalHeader extends Component {
     constructor(props) {
@@ -31,37 +46,39 @@ class GlobalHeader extends Component {
         });
     }
 
-    render() {
-        const { open } = this.state;
-        const sideList = (
-            <List>
-                <ListItem>
-                    <ListItemText primary="A"/>
-                </ListItem>
-                <ListItem>
-                    <ListItemText primary="B"/>
-                </ListItem>
-                <Divider />
-                <ListItem>
-                    <ListItemText primary="C"/>
-                </ListItem>
-                <ListItem>
-                    <ListItemText primary="D"/>
-                </ListItem>
+    renderMenu() {
+        return (
+            <List className="-menu-list">
+                {MENU_LIST.map((menu, index) => {
+                    const { label, link } = menu;
+                    return (
+                        <Link to={link} key={index}>
+                            <ListItem button className="-menu">
+                                <div className="-text">
+                                    {label}
+                                </div>
+                            </ListItem>
+                        </Link>
+                    );
+                })}
             </List>
         );
+    }
+
+    render() {
+        const { open } = this.state;
         return (
-            <div>
-                <AppBar position="static">
+            <div className="global-header">
+                <AppBar position="static" className="-app-bar">
                     <Toolbar>
                         <IconButton color="inherit" aria-label="Menu" onClick={this.openDrawer}>
                             <MenuIcon/>
                         </IconButton>
                     </Toolbar>
                 </AppBar>
-                <SwipeableDrawer open={open} onClose={this.closeDrawer} onOpen={this.openDrawer}>
-                    <div tabIndex={0} role="button" onClick={this.closeDrawer} onKeyDown={this.closeDrawer}>
-                        {sideList}
+                <SwipeableDrawer open={open} onClose={this.closeDrawer} onOpen={this.openDrawer} className="-drawer">
+                    <div tabIndex={0} role="button" onClick={this.closeDrawer} onKeyDown={this.closeDrawer} className="-container">
+                        {this.renderMenu()}
                     </div>
                 </SwipeableDrawer>
             </div>

@@ -18,8 +18,8 @@ const routes = [
 const RootApp = () => {
     return (
         <Provider store={store}>
-            <App>
-                <Router history={history}>
+            <Router history={history}>
+                <App>
                     <Switch>
                         {routes.map((route, index) => {
                             const { path, component } = route;
@@ -28,9 +28,9 @@ const RootApp = () => {
                             )
                         })}
                     </Switch>
-                </Router>
-                {process.env.NODE_ENV === 'production' ? <div/> : <DevTools/>}
-            </App>
+                    {process.env.NODE_ENV === 'production' ? <div/> : <DevTools/>}
+                </App>
+            </Router>
         </Provider>
     );
 };
