@@ -7,12 +7,15 @@ import configureStore, { history } from './store/configureStore';
 
 import App from './App.jsx';
 import HomeRoutes from 'modules/home/routes';
-import Home from 'modules/home/views/Home';
-import DevTools from 'components/DevTools';
+import TermsRoutes from 'modules/termsConditions/routes';
+import PolicyRoutes from 'modules/privacyPolicy/routes';
+import DevTools from 'components/devTools';
 const store = configureStore(Immutable.Map());
 
 const routes = [
-    ...HomeRoutes
+    ...HomeRoutes,
+    ...TermsRoutes,
+    ...PolicyRoutes,
 ]
 
 const RootApp = () => {
