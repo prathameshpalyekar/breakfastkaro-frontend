@@ -8,6 +8,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { Link } from 'react-router-dom';
+import Auth from 'modules/auth/views/Auth';
 import './GlobalHeader.less';
 
 const MENU_LIST = [{
@@ -85,6 +86,7 @@ class GlobalHeader extends Component {
 
     render() {
         const { open } = this.state;
+        const { location } = this.props;
         return (
             <div className="global-header">
                 <AppBar position="static" className="-app-bar">
@@ -93,6 +95,7 @@ class GlobalHeader extends Component {
                             <MenuIcon/>
                         </IconButton>
                         {this.renderLogo()}
+                        <Auth location={location}/>
                     </Toolbar>
                 </AppBar>
                 {this.renderTicker()}

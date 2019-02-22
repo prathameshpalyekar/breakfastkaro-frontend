@@ -24,17 +24,17 @@ const RootApp = () => {
     return (
         <Provider store={store}>
             <Router history={history}>
-                <App>
-                    <Switch>
+                <Switch>
+                    <App>
                         {routes.map((route, index) => {
                             const { path, component } = route;
                             return (
                                 <Route key={index} exact path={path} component={component}/>
                             )
                         })}
-                    </Switch>
-                    {process.env.NODE_ENV === 'production' ? <div/> : <DevTools/>}
-                </App>
+                        {process.env.NODE_ENV === 'production' ? <div/> : <DevTools/>}
+                    </App>
+                </Switch>
             </Router>
         </Provider>
     );

@@ -4,9 +4,10 @@ import Footer from 'modules/footer/Footer';
 
 class App extends Component {
     render() {
+        const { location } = this.props;
         return (
             <div className="app">
-                <GlobalHeader/>
+                <GlobalHeader location={location}/>
                 {this.props.children}
                 <Footer/>
             </div>
