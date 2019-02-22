@@ -30,7 +30,7 @@ function buildAssets(callback) {
             colors: true
         }));
         gulp.src('assets/**/*')
-        .pipe(gulp.dest('../breakfastkaro-backend/assets'));
+        .pipe(gulp.dest('../breakfastkaro-backend/public/assets'));
         callback();
     });
 };
