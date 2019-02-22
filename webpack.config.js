@@ -2,7 +2,6 @@ const webpack = require('webpack');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 
 module.exports = NODE_ENV => {
@@ -82,22 +81,14 @@ module.exports = NODE_ENV => {
             }, {
                 test: /\.(woff|woff2|eot|ttf|svg)(\?\S*)?$/, loader: 'url-loader?limit=100000'
             }, {
-                test: /\.(png|jpg|gif)$/,
-                use: [{
-                    loader: 'file-loader',
-                    options: {
-                        outputPath: 'images',
-                    },
-                }]
+                test: /\.(png|jpg|gif)$/, loader: 'file-loader'
             }]
         },
         plugins: [
             new webpack.NoEmitOnErrorsPlugin(),
             new MiniCssExtractPlugin({
-                filename: '[name].css',
-                chunkFilename: '[id].css',
+                filename: 'style.css',
             }),
-            new CopyWebpackPlugin([{ from: 'app/assets/images', to: 'assets'}]),
         ]
     }
 };
