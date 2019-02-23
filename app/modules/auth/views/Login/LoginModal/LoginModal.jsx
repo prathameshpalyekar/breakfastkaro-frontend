@@ -18,13 +18,12 @@ const FORM_TYPES = {
 class LoginModal extends Component {
     constructor(props) {
         super(props);
-        const { title, type } = FORM_TYPES.SIGN_IN;
+        const { title, type } = FORM_TYPES.REGISTER;
         this.state = {
             title,
             type,
         };
         this.onTypeChange = this.onTypeChange.bind(this);
-        // this.closeForm = this.closeForm.bind(this);
     }
 
     onTypeChange(type) {
