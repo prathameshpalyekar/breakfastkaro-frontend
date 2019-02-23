@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import Login from './Login/Login';
 const ADMIN_PATH = '/admin';
 
@@ -24,19 +23,4 @@ class Auth extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        // isAuthenticated: state.getIn(['auth', 'isAuthenticated']),
-        // isFetching: state.getIn(['auth', 'isFetching']),
-        // errorMessage: state.getIn(['auth', 'errorMessage']),
-        // user: state.getIn(['auth', 'user']),
-    };
-};
-
-const mapDispatchtoProps = (dispatch) => {
-    return {
-        dispatch
-    };
-};
-
-export default connect(mapStateToProps, mapDispatchtoProps)(Auth);
+export default Auth;
