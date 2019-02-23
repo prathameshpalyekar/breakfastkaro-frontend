@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
 import Formsy from 'formsy-react';
 import FC from 'components/formsy';
 import './SignInForm.less';
@@ -46,30 +45,8 @@ class SignInForm extends Component {
             <div className="-sign-in-form">
                 <div className="-inputs">
                     <Formsy onValidSubmit={this.submit} onValid={this.enableButton} onInvalid={this.disableButton}>
-                        <FC.Input
-                            className="-email"
-                            type="email"
-                            name="email"
-                            autoComplete="email"
-                            label="Email"
-                            fullWidth={true}
-                            margin="normal"
-                            InputLabelProps={{style}}
-                            inputProps={{style}}
-                            required
-                            variant="outlined"/>
-                        <FC.Input
-                            className="-password"
-                            name="password"
-                            type="password"
-                            autoComplete="current-password"
-                            label="Password"
-                            margin="normal"
-                            fullWidth={true}
-                            InputLabelProps={{style}}
-                            inputProps={{style}}
-                            required
-                            variant="outlined"/>
+                        <FC.Input type="email" name="email" label="Email" required/>
+                        <FC.Input type="password" name="password" label="Password" required/>
                         <Button type="submit" disabled={!canSubmit} variant="outlined" className="-action-sign-in">Sign In</Button>
                     </Formsy>
                 </div>

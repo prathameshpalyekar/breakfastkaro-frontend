@@ -1,6 +1,9 @@
 import { withFormsy } from 'formsy-react';
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
+const style = {
+    fontSize: 15
+};
 
 class Input extends React.Component {
     constructor(props) {
@@ -39,7 +42,16 @@ class Input extends React.Component {
 
         return (
             <div>
-                <TextField {...rest} onChange={this.changeValue} value={getValue() || ''}/>
+                <TextField
+                    {...rest}
+                    InputLabelProps={{style}}
+                    inputProps={{style}}
+                    fullWidth={true}
+                    margin="normal"
+                    variant="outlined"
+                    onChange={this.changeValue}
+                    value={getValue() || ''}
+                />
                 <span>{errorMessage}</span>
             </div>
         );
