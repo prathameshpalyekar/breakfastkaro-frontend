@@ -20,7 +20,6 @@ class Login extends Component {
     }
 
     closeForm() {
-        console.log('calling')
         this.setState({
             open: false
         });
