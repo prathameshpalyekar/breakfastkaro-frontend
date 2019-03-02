@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import Formsy from 'formsy-react';
 import FC from 'components/formsy';
 import { signUp } from 'modules/auth/actions/signUp';
@@ -21,6 +22,22 @@ class RegisterForm extends Component {
         this.disableButton = this.disableButton.bind(this);
     }
 
+    componentWillReceiveProps(nextProps) {
+        const { isFetching, errorMessage } = nextProps;
+        if (this.state.submitted && !isFetching) {
+            if (errorMessage) {
+                this.props.showResponse(errorMessage);
+            } else {
+                this.props.showResponse('Account created successfully. Please verify your account.');
+                this.props.closeForm();
+            }
+
+            this.setState({
+                submitted: false
+            });
+        }
+    }
+
     onTypeChange() {
         this.props.onTypeChange('signIn');
     }
@@ -28,6 +45,9 @@ class RegisterForm extends Component {
     submit(model) {
         const { dispatch } = this.props;
         dispatch(signUp(model));
+        this.setState({
+            submitted: true
+        });
     }
 
     enableButton() {
@@ -43,8 +63,7 @@ class RegisterForm extends Component {
     }
 
     render() {
-        const { canSubmit } = this.state;
-        console.log(this.props)
+        const { canSubmit, submitted } = this.state;
         return (
             <div className="-register-form">
                 <div className="-inputs">
@@ -53,7 +72,10 @@ class RegisterForm extends Component {
                         <FC.Input type="text" name="personalNumber" label="Phone Number" required/>
                         <FC.Input type="email" name="email" label="Email" required/>
                         <FC.Input type="password" name="password" label="Password" required/>
-                        <Button type="submit" disabled={!canSubmit} variant="outlined" className="-action-sign-in">Register</Button>
+                        <Button type="submit" disabled={!canSubmit || submitted} variant="outlined" className="-action-sign-in">
+                            Register
+                            {submitted && <CircularProgress size={24} className="-loader"/>}
+                        </Button>
                     </Formsy>
                 </div>
                 <div className="-switch-form">
@@ -68,8 +90,8 @@ class RegisterForm extends Component {
 const mapStateToProps = (state) => {
     return {
         // isAuthenticated: state.getIn(['auth', 'isAuthenticated']),
-        // isFetching: state.getIn(['auth', 'isFetching']),
-        // errorMessage: state.getIn(['auth', 'errorMessage']),
+        isFetching: state.getIn(['auth', 'isFetching']),
+        errorMessage: state.getIn(['auth', 'errorMessage']),
         user: state.getIn(['auth', 'user']),
     };
 };
