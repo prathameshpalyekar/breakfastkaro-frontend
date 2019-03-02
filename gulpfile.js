@@ -9,7 +9,7 @@ const terminalLink = require('terminal-link');
 
 const browserSync = require('browser-sync').create();
 
-const WEBPACK_SERVER_PORT = 5001;
+const WEBPACK_SERVER_PORT = 6001;
 const WEBPACK_NETWORK_IP = '0.0.0.0';
 const WEBPACK_SERVER_HOST = 'http://' + WEBPACK_NETWORK_IP;
 const WEBPACK_SERVER_CONFIG = WEBPACK_SERVER_HOST + ':' + WEBPACK_SERVER_PORT;
@@ -74,14 +74,6 @@ function defaultTask(done) {
             errorDetails: false,
             warnings: true,
             publicPath: true
-        },
-        proxy: {
-            '/api/*': {
-                target: WEBPACK_SERVER_CONFIG
-            },
-            '/nes/*': {
-                target: WEBPACK_SERVER_CONFIG
-            }
         },
     }).listen(WEBPACK_SERVER_PORT, WEBPACK_NETWORK_IP, (err) => {
         if (err) {
