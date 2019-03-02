@@ -30,7 +30,7 @@ class Login extends Component {
         return (
             <div className="user-login-container">
                 <Button color="inherit" className="-login" onClick={this.openForm}>Login</Button>
-                {true ? <LoginModal closeForm={this.closeForm}/> : null}
+                {true ? <LoginModal closeForm={this.closeForm} showResponse={this.props.showResponse}/> : null}
             </div>
         )
     }

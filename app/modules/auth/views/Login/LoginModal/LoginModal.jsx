@@ -41,7 +41,7 @@ class LoginModal extends Component {
                 <div>
                     {type === FORM_TYPES.SIGN_IN.type ?
                         <SignInForm onTypeChange={this.onTypeChange}/> :
-                        <RegisterForm onTypeChange={this.onTypeChange}/>
+                        <RegisterForm onTypeChange={this.onTypeChange} showResponse={this.props.showResponse} closeForm={this.props.closeForm}/>
                     }
                 </div>
             </Modal>
