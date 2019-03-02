@@ -33,19 +33,17 @@ export function signUp(user) {
             data: user
         }).then((xhrResponse) => {
             const response = xhrResponse.data;
+            const { data } = response;
             if (response.success) {
                 dispatch(receiveSignUp(response.data));
-                // onSuccess && onSuccess(response.data);
             } else {
-                const message = 'Failed to fetch user information.';
+                const message = (response && response.message) || 'Failed to create user. API failure.';
                 dispatch(signUpError(message));
-                // onFailure && onFailure(message);
             }
         }).catch((xhrResponse) => {
-            const response = xhrResponse.data;
-            const message = (response && response.message) || 'Failed to fetch user information. API failure.';
+            const { data } = xhrResponse.response;
+            const message = (data && data.message) || 'Failed to create user. API failure.';
             dispatch(signUpError(message));
-            // onFailure && onFailure(message);
         });
     }
 }
