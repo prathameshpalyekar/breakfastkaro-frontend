@@ -28,6 +28,9 @@ class SignInForm extends Component {
             if (errorMessage) {
                 this.props.showResponse(errorMessage);
             } else {
+                const { user } = nextProps;
+                const { signedToken } = user;
+                localStorage.setItem('breakfastkaro_token', signedToken)
                 this.props.showResponse('Logged in successfully.');
                 this.props.closeForm();
             }
