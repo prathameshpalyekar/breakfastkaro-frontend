@@ -95,7 +95,7 @@ class GlobalHeader extends Component {
                             <MenuIcon/>
                         </IconButton>
                         {this.renderLogo()}
-                        <Auth location={location}/>
+                        <Auth/>
                     </Toolbar>
                 </AppBar>
                 {this.renderTicker()}
