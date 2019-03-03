@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import LoginModal from './LoginModal/LoginModal';
 import './Login.less';
@@ -27,13 +28,29 @@ class Login extends Component {
 
     render() {
         const { open } = this.state;
+        const { user } = this.props;
         return (
             <div className="user-login-container">
-                <Button color="inherit" className="-login" onClick={this.openForm}>Login</Button>
-                {true ? <LoginModal closeForm={this.closeForm} showResponse={this.props.showResponse}/> : null}
+                {!open && user ?
+                    <Button color="inherit" className="-login">User</Button> :
+                    <Button color="inherit" className="-login" onClick={this.openForm}>Login</Button>
+                }
+                {open ? <LoginModal closeForm={this.closeForm} showResponse={this.props.showResponse}/> : null}
             </div>
         )
     }
 }
 
-export default Login;
+const mapStateToProps = (state) => {
+    return {
+        user: state.getIn(['auth', 'user']),
+    };
+};
+
+const mapDispatchtoProps = (dispatch) => {
+    return {
+        dispatch
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchtoProps)(Login);
