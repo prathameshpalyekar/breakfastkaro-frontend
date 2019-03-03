@@ -32,7 +32,6 @@ export function login(user) {
             method: 'POST',
             data: user
         }).then((xhrResponse) => {
-            console.log(xhrResponse)
             const response = xhrResponse.data;
             const { data } = response;
             if (response.success) {
