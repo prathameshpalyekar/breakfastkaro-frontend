@@ -18,7 +18,7 @@ const FORM_TYPES = {
 class LoginModal extends Component {
     constructor(props) {
         super(props);
-        const { title, type } = FORM_TYPES.REGISTER;
+        const { title, type } = FORM_TYPES.SIGN_IN;
         this.state = {
             title,
             type,
@@ -40,7 +40,7 @@ class LoginModal extends Component {
             <Modal open={true} closeForm={this.props.closeForm} title={title}>
                 <div>
                     {type === FORM_TYPES.SIGN_IN.type ?
-                        <SignInForm onTypeChange={this.onTypeChange}/> :
+                        <SignInForm onTypeChange={this.onTypeChange} showResponse={this.props.showResponse} closeForm={this.props.closeForm}/> :
                         <RegisterForm onTypeChange={this.onTypeChange} showResponse={this.props.showResponse} closeForm={this.props.closeForm}/>
                     }
                 </div>
