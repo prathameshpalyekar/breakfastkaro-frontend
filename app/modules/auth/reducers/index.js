@@ -1,6 +1,7 @@
 import Immutable from 'immutable';
 import { SIGNUP_REQUEST, SIGNUP_FAILURE, SIGNUP_SUCCESS } from '../actions/signUp.js';
 import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE } from '../actions/login.js';
+import { FETCH_USER_REQUEST, FETCH_USER_SUCCESS, FETCH_USER_FAILURE } from '../actions/fetchUser.js';
 
 function getUser() {
     const { _user } = window;
@@ -37,6 +38,24 @@ const auth = (state = Immutable.fromJS({
                 user: null
             });
 
+        case FETCH_USER_REQUEST:
+            return state.merge({
+                isFetchingUser: true,
+                errorMessage: '',
+            });
+        case FETCH_USER_SUCCESS:
+            return state.merge({
+                isFetchingUser: false,
+                errorMessage: '',
+                user: action.user
+            });
+        case FETCH_USER_FAILURE:
+            return state.merge({
+                isFetchingUser: false,
+                errorMessage: action.message,
+                user: null
+            });
+
         // case LOGOUT_REQUEST:
         //     return state.merge({
         //         isFetching: true
@@ -53,19 +72,16 @@ const auth = (state = Immutable.fromJS({
             return state.merge({
                 isFetching: true,
                 errorMessage: null,
-                user: null
             });
         case SIGNUP_SUCCESS:
             return state.merge({
                 isFetching: false,
                 errorMessage: null,
-                user: action.user
             });
         case SIGNUP_FAILURE:
             return state.merge({
                 isFetching: false,
                 errorMessage: action.message,
-                user: null
             });
 
         default:
