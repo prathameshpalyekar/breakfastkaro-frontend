@@ -89,7 +89,6 @@ class RegisterForm extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        // isAuthenticated: state.getIn(['auth', 'isAuthenticated']),
         isFetching: state.getIn(['auth', 'isFetching']),
         errorMessage: state.getIn(['auth', 'errorMessage']),
         user: state.getIn(['auth', 'user']),
