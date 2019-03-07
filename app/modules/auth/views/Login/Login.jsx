@@ -47,7 +47,6 @@ class Login extends Component {
     }
 
     renderUser() {
-        console.log(this.props)
         const { anchorEl } = this.state;
         const ariaOwns = anchorEl ? 'simple-menu' : undefined;
         const { user } = this.props;

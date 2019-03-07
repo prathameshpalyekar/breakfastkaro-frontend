@@ -73,7 +73,7 @@ class SignInForm extends Component {
                     <Formsy onValidSubmit={this.submit} onValid={this.enableButton} onInvalid={this.disableButton}>
                         <FC.Input type="email" name="email" label="Email" required/>
                         <FC.Input type="password" name="password" label="Password" required/>
-                        <Button type="submit" disabled={!canSubmit} variant="outlined" className="-action-sign-in">
+                        <Button type="submit" disabled={!canSubmit || submitted} variant="outlined" className="-action-sign-in">
                             Sign In
                             {submitted && <CircularProgress size={24} className="-loader"/>}
                         </Button>
