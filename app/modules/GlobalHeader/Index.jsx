@@ -69,7 +69,7 @@ class GlobalHeader extends Component {
     renderLogo() {
         return (
             <div className="-logo">
-                Title
+                Breakfastkaro.com
             </div>
         );
     }

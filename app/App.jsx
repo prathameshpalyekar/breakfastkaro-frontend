@@ -8,7 +8,9 @@ class App extends Component {
         return (
             <div className="app">
                 <GlobalHeader location={location}/>
-                {this.props.children}
+                <div className="-app-container">
+                    {this.props.children}
+                </div>
                 <Footer/>
             </div>
         )
